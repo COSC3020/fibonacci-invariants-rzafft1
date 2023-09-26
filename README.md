@@ -21,9 +21,31 @@ testing code that uses [jsverify](https://jsverify.github.io/) in
 What is a good invariant for your recursive implementation of `fib()`
 i.e. something that is always true at the beginning of the recursive call?
 
+- Our array that starts with [0,1], 
+therefore therefore the state of this world so to say, is that our array length - 1
+contains the number of fibonacci numbers currently in the array.
+
+- At the start of each recursive call the number of elements in the array - 1, is
+also the number of fibonacci numbers.
+
 Hint: Think about what the "state of the world" is here and what you can say
 about it at the start of each recursive call.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. You do not need to prove that the invariant is correct. Add
 your answer to this markdown file.
+
+- Every iteration, the array.length will only change if n >= 1, and in this case, 
+the array length will match the number of fibonacci numbers in the array
+
+- We know this is true because at the end of our code, the array.length-1 will always be equal to n, the number of fibonacci numbers in the array
+
+example ...
+
+- if n = 4 ... arr = [0,1,1] (size = 2) ... n - 1
+- if n = 3 ... arr = [0,1,1,2] (size = 3) ... n - 1
+- if n = 2 ... arr = [0,1,1,2,3] (size = 4) .. n - 1
+- if n = 1 ... return [0,1,1,2,3]
+
+as showed above, the size should always be equal to the number of fibonacci
+numbers currently in the array.
