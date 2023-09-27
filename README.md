@@ -23,10 +23,7 @@ i.e. something that is always true at the beginning of the recursive call?
 
 - Our array that starts with [0,1], 
 therefore therefore the state of this world so to say, is that our array length - 1
-contains the number of fibonacci numbers currently in the array.
-
-- At the start of each recursive call the number of elements in the array - 1, is
-also the number of fibonacci numbers.
+contains the number of fibonacci numbers currently in the array and **n in the call fib(n) is the number of fibonacci numbers that still need to be added to the array**
 
 Hint: Think about what the "state of the world" is here and what you can say
 about it at the start of each recursive call.
@@ -35,17 +32,18 @@ Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. You do not need to prove that the invariant is correct. Add
 your answer to this markdown file.
 
-- Every iteration, the array.length will only change if n >= 1, and in this case, 
-the array length will match the number of fibonacci numbers in the array
+- At the start of each recursive call, n in is the amount of fibonacci numbers that need to be added. Therefore we can say that before the first call, n = n because no fibonacci numbers have been added. After the first call, n = n - 1, therefore (n-1) fibonacci numbers still need to be added to the array. Since we start with the array [0,1] we will stop once n = 1, and since we started with one fibonacci number, we have no more fibonacci numbers to add once n = 1. 
 
-- We know this is true because at the end of our code, the array.length-1 will always be equal to n, the number of fibonacci numbers in the array
+- Every iteration, n will decrement, telling us that we have inserted a fibonacci number, and we only have (n-1) fibonacci number left to add to the array
+
+- We know this is true because at the end of our code, n = 1, signaling that we have no more fibonacci numbers to add to the array. It stops at n = 1 instead of n = 0, because we initalized the array to start with a single fibonacci number, and then we need to add n-1 more fibonacci numbers to the array
 
 example ...
 
-- if n = 4 ... arr = [0,1,1] (size = 2) ... n - 1
-- if n = 3 ... arr = [0,1,1,2] (size = 3) ... n - 1
-- if n = 2 ... arr = [0,1,1,2,3] (size = 4) .. n - 1
-- if n = 1 ... return [0,1,1,2,3]
+- arr = [0,1] ........ n = 4
+- arr = [0,1,1] ...... n = 3
+- arr = [0,1,1,2] .... n = 2
+- arr = [0,1,1,2,3] .. n = 1
+- return [0,1,1,2,3] (n-1 = 0, we have no more fibonacci numbers to add)
 
-as showed above, the size should always be equal to the number of fibonacci
-numbers currently in the array.
+- as showed above, in each iteration, (n-1) is equal to the number of fibonacci numbers that still need to be added. Once (n-1) = 0 we know we can return the array because no more fibonacci numbers need to be added.
